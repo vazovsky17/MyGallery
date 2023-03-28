@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StateViewFlipper">
+        <attr name="loadingLayoutRes" format="reference" />
+        <attr name="errorLayoutRes" format="reference" />
+    </declare-styleable>
+
+</resources>
