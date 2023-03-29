@@ -1,4 +1,4 @@
-package app.vazovsky.mygallery.domain.base
+package app.vazovsky.mygallery.domain.base.usecase
 
 import app.vazovsky.mygallery.data.remote.base.LoadableResult
 import app.vazovsky.mygallery.data.remote.base.Progressable

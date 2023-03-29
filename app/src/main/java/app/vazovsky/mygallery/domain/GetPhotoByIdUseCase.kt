@@ -2,7 +2,7 @@ package app.vazovsky.mygallery.domain
 
 import app.vazovsky.mygallery.data.model.Photo
 import app.vazovsky.mygallery.data.repository.GalleryRepository
-import app.vazovsky.mygallery.domain.base.UseCaseUnary
+import app.vazovsky.mygallery.domain.base.usecase.UseCaseUnary
 import javax.inject.Inject
 
 /** Получение фото по ID */

@@ -1,4 +1,4 @@
-package app.vazovsky.mygallery.domain.base
+package app.vazovsky.mygallery.domain.base.usecase
 
 import android.annotation.SuppressLint
 

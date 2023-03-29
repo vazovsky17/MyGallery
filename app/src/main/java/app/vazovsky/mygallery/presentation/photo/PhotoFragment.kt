@@ -1,7 +1,7 @@
 package app.vazovsky.mygallery.presentation.photo
 
-import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import app.vazovsky.mygallery.R
@@ -25,7 +25,6 @@ class PhotoFragment : BaseFragment(R.layout.fragment_photo) {
         args.id?.let { viewModel.getPhotoById(it) }
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onSetupLayout(savedInstanceState: Bundle?): Unit = with(binding) {
         root.fitTopInsetsWithPadding()
 
@@ -36,16 +35,14 @@ class PhotoFragment : BaseFragment(R.layout.fragment_photo) {
         observeNavigationCommands()
         photoLiveData.observe { result ->
             binding.stateViewFlipper.setStateFromResult(result)
-            result.doOnSuccess { photo ->
-                bindPhoto(photo)
-            }
+            result.doOnSuccess { photo -> bindPhoto(photo) }
             result.doOnFailure { Timber.d(it.message) }
         }
     }
 
     private fun bindPhoto(photo: Photo) = with(binding) {
+        textViewDescription.isVisible = photo.description.isNotBlank()
         textViewDescription.text = photo.description
         imageViewPhoto.load(photo.urls.full)
-
     }
 }
