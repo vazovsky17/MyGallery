@@ -23,7 +23,17 @@
     <dimen name="text_26">26sp</dimen>
     <dimen name="text_40">40sp</dimen>
 
+    <dimen name="titleSize">18sp</dimen>
+    <dimen name="tabsSpace">8dp</dimen>
+
+    <dimen name="base_button_min_height">48dp</dimen>
+    <dimen name="small_button_min_height">36dp</dimen>
+
+    <dimen name="base_button_vertical_padding">12dp</dimen>
+    <dimen name="small_button_vertical_padding">7dp</dimen>
+
     <!-- State View Flipper -->
     <dimen name="error_state_animation_horizontal_margin">72dp</dimen>
     <dimen name="empty_state_animation_horizontal_margin">72dp</dimen>
+    <dimen name="scale_image_height">400dp</dimen>
 </resources>

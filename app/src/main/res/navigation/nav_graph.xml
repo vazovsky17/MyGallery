@@ -12,12 +12,24 @@
         tools:layout="@layout/fragment_gallery">
         <action
             android:id="@+id/action_galleryFragment_to_photoFragment"
-            app:destination="@id/photoFragment" />
+            app:destination="@id/photoFragment">
+
+            <argument
+                android:name="id"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
     </fragment>
 
     <fragment
         android:id="@+id/photoFragment"
         android:name="app.vazovsky.mygallery.presentation.photo.PhotoFragment"
         android:label="PhotoFragment"
-        tools:layout="@layout/fragment_photo" />
+        tools:layout="@layout/fragment_photo">
+
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

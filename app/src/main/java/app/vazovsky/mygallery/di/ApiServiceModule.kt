@@ -17,19 +17,18 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val DEFAULT_BASE_URL = "https://images.unsplash.com/"
 private const val BASE_URL = "https://api.unsplash.com/"
-private const val TOKEN = "sxqtfUPYg_bHiW16STwuOdOVYuyoB23pICQ5KghF_ek"
+private const val ACCESS_KEY = "sxqtfUPYg_bHiW16STwuOdOVYuyoB23pICQ5KghF_ek"
 
 @Module
 @InstallIn(SingletonComponent::class)
-class ApiServiceModule {
+object ApiServiceModule {
 
     @Singleton
     @Provides
     fun provideClient(@ApplicationContext context: Context): OkHttpClient {
         return OkHttpClient.Builder().addInterceptor { chain ->
-            chain.proceed(chain.request().newBuilder().addHeader("X-API-KEY", TOKEN).build())
+            chain.proceed(chain.request().newBuilder().addHeader("Authorization", "Client-ID $ACCESS_KEY").build())
         }.addInterceptor(ChuckerInterceptor(context)).build()
     }
 
@@ -43,7 +42,8 @@ class ApiServiceModule {
     @Singleton
     @Provides
     fun provideRetrofit(gson: Gson, client: OkHttpClient): Retrofit {
-        return Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).client(client).build()
+        return Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).client(client)
+            .build()
     }
 
     @Singleton

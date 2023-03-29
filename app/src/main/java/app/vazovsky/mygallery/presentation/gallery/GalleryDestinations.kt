@@ -4,7 +4,8 @@ import app.vazovsky.mygallery.presentation.base.NavigationCommand
 import javax.inject.Inject
 
 class GalleryDestinations @Inject constructor() {
-    fun photo() = NavigationCommand.To(
-        GalleryFragmentDirections.actionGalleryFragmentToPhotoFragment()
+
+    fun photo(id: String) = NavigationCommand.To(
+        GalleryFragmentDirections.actionGalleryFragmentToPhotoFragment(id)
     )
 }

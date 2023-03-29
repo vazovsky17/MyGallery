@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MaterialButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:textAppearance">@style/Font.Body_1.Medium</item>
+        <item name="android:minHeight">@dimen/base_button_min_height</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:contentInsetStart">0dp</item>
+        <item name="android:contentInsetEnd">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetTop">0dp</item>
+
+        <item name="cornerRadius">6dp</item>
+    </style>
+
+    <!-- PRIMARY BUTTON -->
+    <style name="PrimaryButtonStyle" parent="MaterialButtonStyle">
+        <item name="backgroundTint">@color/primary_button_bg_color</item>
+        <item name="android:textColor">?colorOnPrimary</item>
+        <item name="android:paddingTop">@dimen/base_button_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/base_button_vertical_padding</item>
+    </style>
+
+    <style name="PrimaryButtonStyle.Small">
+        <item name="android:minHeight">@dimen/small_button_min_height</item>
+        <item name="android:textAppearance">@style/Font.Body_2.Medium</item>
+        <item name="android:paddingTop">@dimen/small_button_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/small_button_vertical_padding</item>
+    </style>
+</resources>

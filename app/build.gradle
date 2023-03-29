@@ -55,6 +55,8 @@ dependencies {
 
     implementation(libs.kotlin)
     implementation(libs.kotlin.serialization)
+    implementation(libs.kotlin.datetime)
+    implementation(libs.livedata.ktx)
     coreLibraryDesugaring(libs.desugaring)
 
     implementation(libs.hilt)
