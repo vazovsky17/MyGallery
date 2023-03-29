@@ -1,7 +1,6 @@
 package app.vazovsky.mygallery.presentation.photo
 
 import android.os.Bundle
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import app.vazovsky.mygallery.R
@@ -28,6 +27,7 @@ class PhotoFragment : BaseFragment(R.layout.fragment_photo) {
     override fun onSetupLayout(savedInstanceState: Bundle?): Unit = with(binding) {
         root.fitTopInsetsWithPadding()
 
+        buttonBack.setOnClickListener { viewModel.navigateBack() }
         stateViewFlipper.setRetryMethod { args.id?.let { viewModel.getPhotoById(it) } }
     }
 
@@ -41,8 +41,6 @@ class PhotoFragment : BaseFragment(R.layout.fragment_photo) {
     }
 
     private fun bindPhoto(photo: Photo) = with(binding) {
-        textViewDescription.isVisible = photo.description.isNotBlank()
-        textViewDescription.text = photo.description
         imageViewPhoto.load(photo.urls.full)
     }
 }

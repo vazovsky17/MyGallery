@@ -7,7 +7,6 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener
-import android.widget.ImageView
 import com.google.android.material.imageview.ShapeableImageView
 import kotlin.math.abs
 import kotlin.math.min
@@ -17,7 +16,7 @@ class ScaleImageView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
 ) : ShapeableImageView(context, attrs) {
 
-    @get:JvmName("getAdapterContext") var matrix: Matrix? = null
+    @get:JvmName("matrix") var matrix: Matrix? = null
     var mode = ImageState.NONE
 
     var lastPoint = PointF()
@@ -34,17 +33,17 @@ class ScaleImageView @JvmOverloads constructor(
     private var origHeight = 0f
     var oldMeasuredWidth = 0
     var oldMeasuredHeight = 0
-    var mScaleDetector: ScaleGestureDetector? = null
+    var scaleDetector: ScaleGestureDetector? = null
 
     init {
         super.setClickable(true)
-        mScaleDetector = ScaleGestureDetector(context, ScaleListener())
+        scaleDetector = ScaleGestureDetector(context, ScaleListener())
         matrix = Matrix()
         matrixArray = FloatArray(9)
         imageMatrix = matrix
-        scaleType = ImageView.ScaleType.MATRIX
+        scaleType = ScaleType.MATRIX
         setOnTouchListener { _, event ->
-            mScaleDetector!!.onTouchEvent(event)
+            scaleDetector!!.onTouchEvent(event)
             val currentPoint = PointF(event.x, event.y)
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -86,20 +85,20 @@ class ScaleImageView @JvmOverloads constructor(
         }
 
         override fun onScale(detector: ScaleGestureDetector): Boolean {
-            var mScaleFactor = detector.scaleFactor
+            var scaleFactor = detector.scaleFactor
             val origScale = saveScale
-            saveScale *= mScaleFactor
+            saveScale *= scaleFactor
             if (saveScale > maxScale) {
                 saveScale = maxScale
-                mScaleFactor = maxScale / origScale
+                scaleFactor = maxScale / origScale
             } else if (saveScale < minScale) {
                 saveScale = minScale
-                mScaleFactor = minScale / origScale
+                scaleFactor = minScale / origScale
             }
             if (origWidth * saveScale <= viewWidth || origHeight * saveScale <= viewHeight) matrix!!.postScale(
-                mScaleFactor, mScaleFactor, (viewWidth / 2).toFloat(), (viewHeight / 2).toFloat()
+                scaleFactor, scaleFactor, (viewWidth / 2).toFloat(), (viewHeight / 2).toFloat()
             ) else matrix!!.postScale(
-                mScaleFactor, mScaleFactor, detector.focusX, detector.focusY
+                scaleFactor, scaleFactor, detector.focusX, detector.focusY
             )
             fixTrans()
             return true
@@ -144,7 +143,6 @@ class ScaleImageView @JvmOverloads constructor(
         oldMeasuredHeight = viewHeight
         oldMeasuredWidth = viewWidth
         if (saveScale == 1f) {
-            // Fit to screen.
             val scale: Float
             val drawable = drawable
             if (drawable == null || drawable.intrinsicWidth == 0 || drawable.intrinsicHeight == 0) return

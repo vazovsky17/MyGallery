@@ -12,13 +12,10 @@
 
         <item name="appBarLayoutStyle">@style/AppBarStyle</item>
         <item name="toolbarStyle">@style/ToolbarStyle</item>
-
-        <item name="android:colorBackground">@color/majorelle_blue</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="ShapeAppearanceOverlay.App.Corners" parent="">
-        <item name="cornerSizeTopLeft">20dp</item>
-        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSize">20dp</item>
     </style>
 </resources>

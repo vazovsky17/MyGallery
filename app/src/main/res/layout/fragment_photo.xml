@@ -1,46 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<app.vazovsky.mygallery.presentation.views.stateviewflipper.StateViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/coordinator"
+    android:id="@+id/stateViewFlipper"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:elevation="0dp"
-        app:liftOnScroll="true">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            app:title="@string/app_name"
-            app:titleCentered="true" />
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/margin_8"
+            android:layout_marginVertical="@dimen/margin_20"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp">
 
-        <TextView
-            android:id="@+id/textViewDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_20"
-            android:layout_marginBottom="20dp"
-            android:textAppearance="@style/Font.Heading_1.Black"
-            android:textColor="@color/white" />
-    </com.google.android.material.appbar.AppBarLayout>
+            <app.vazovsky.mygallery.presentation.views.imageview.ScaleImageView
+                android:id="@+id/imageViewPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Corners" />
 
-    <app.vazovsky.mygallery.presentation.views.stateviewflipper.StateViewFlipper
-        android:id="@+id/stateViewFlipper"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_round_sheet"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <app.vazovsky.mygallery.presentation.views.imageview.ScaleImageView
-            android:id="@+id/imageViewPhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Corners" />
-    </app.vazovsky.mygallery.presentation.views.stateviewflipper.StateViewFlipper>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <ImageButton
+                android:id="@+id/buttonBack"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="start|top"
+                android:layout_margin="@dimen/margin_20"
+                android:background="@drawable/ic_back"
+                android:contentDescription="@null" />
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+</app.vazovsky.mygallery.presentation.views.stateviewflipper.StateViewFlipper>
